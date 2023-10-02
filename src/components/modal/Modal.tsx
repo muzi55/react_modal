@@ -1,14 +1,14 @@
 import React from "react";
 import "./modal.css";
+import { useModalStore } from "../../zustand/modalStore";
 interface Props {
   children: React.ReactNode;
-  modalState: boolean;
-  setModalState: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Modal = ({ children, modalState, setModalState }: Props): JSX.Element => {
+const Modal = ({ children }: Props): JSX.Element => {
+  const { modalState, setCloseModalState } = useModalStore();
   const handleModalCloseBtn = () => {
-    setModalState(false);
+    setCloseModalState();
   };
   return (
     <>
